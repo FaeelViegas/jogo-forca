@@ -115,10 +115,34 @@ function assembleWord() {
 function verifyLetter(letter) {
     if (attempt > 0) {
         styleLetter("key-" + letter);
+        compareList(letter);
     }
 }
 
 function styleLetter(key) {
     document.getElementById(key).style.background = "#30A5A5";
     document.getElementById(key).style.color = "#ffffff";
+}
+
+function compareList(letter) {
+    let win = true;
+    const position = secretWordDrawn.indexOf(letter);
+    if (position < 0) {
+        attempt--;
+    } else {
+        for (i = 0; i < secretWordDrawn.length; i++) {
+            if (secretWordDrawn[i] == letter) {
+                list[i] = letter;
+            }
+        }
+    }
+    for (i = 0; i < secretWordDrawn.length; i++) {
+        if (secretWordDrawn[i] != list[i]) {
+            win = false;
+        }
+    }
+
+    if (win == true) {
+        attempt = 0;
+    }
 }
