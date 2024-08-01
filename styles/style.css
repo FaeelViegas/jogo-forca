@@ -42,7 +42,7 @@ body {
     width: 15px;
     margin-left: 5px;
     text-align: center;
-    border-bottom: 2px solid #14B6DA;
+    border-bottom: 2px solid #30A5A5;
     color: white;
 }
 
@@ -65,7 +65,7 @@ body {
 }
 
 .keys button i {
-    color: #0485a2;
+    color: #30A5A5;
 }
 
 .keys button:hover {
@@ -74,7 +74,7 @@ body {
 
 #category {
     margin-top: 25px;
-    color: #14B6DA;
+    color: #30A5A5;
     font-size: 1.2em;
     font-weight: 800;
 }

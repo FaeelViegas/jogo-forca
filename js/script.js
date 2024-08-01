@@ -1,5 +1,6 @@
 let secretWordCategory;
 let secretWordDrawn;
+let attempt = 6;
 let list = [];
 const words = [
     { name: "BRASIL", category: "PAISES" },
@@ -91,12 +92,12 @@ function createSecretWord() {
     const indexWord = parseInt(Math.random() * words.length);
 
     secretWordDrawn = words[indexWord].name;
-    secretWordCategoryn = words[indexWord].category;
+    secretWordCategory = words[indexWord].category;
 }
 assembleWord();
 function assembleWord() {
     const category = document.getElementById("category");
-    category.innerHTML = secretWordCategoryn;
+    category.innerHTML = secretWordCategory;
 
     const wordScreen = document.getElementById("secret-word");
     wordScreen.innerHTML = " ";
@@ -109,4 +110,15 @@ function assembleWord() {
             wordScreen.innerHTML = wordScreen.innerHTML + "<div class='letters'>" + list[i] + "</div>";
         }
     }
+}
+
+function verifyLetter(letter) {
+    if (attempt > 0) {
+        styleLetter("key-" + letter);
+    }
+}
+
+function styleLetter(key) {
+    document.getElementById(key).style.background = "#30A5A5";
+    document.getElementById(key).style.color = "#ffffff";
 }
