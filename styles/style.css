@@ -64,6 +64,10 @@ body {
     transition: ease-in-out .2s;
 }
 
+.keys button:disabled {
+    cursor: not-allowed;
+}
+
 .keys button i {
     color: #30A5A5;
 }

@@ -113,6 +113,7 @@ function assembleWord() {
 }
 
 function verifyLetter(letter) {
+    document.getElementById("key-" + letter).disabled = true;
     if (attempt > 0) {
         styleLetter("key-" + letter);
         compareList(letter);
@@ -131,6 +132,9 @@ function compareList(letter) {
     if (position < 0) {
         attempt--;
         loadImage();
+        if (attempt == 0) {
+            openModal("OPS!", "Você perdeu 🥹... A palavra secreta era <br>" + secretWordDrawn);
+        }
     } else {
         for (i = 0; i < secretWordDrawn.length; i++) {
             if (secretWordDrawn[i] == letter) {
@@ -145,6 +149,7 @@ function compareList(letter) {
     }
 
     if (win == true) {
+        openModal("PARABÉNS!", "Você acertou...🤗");
         attempt = 0;
     }
 }
@@ -173,4 +178,19 @@ function loadImage() {
             document.getElementById("image").style.background = "url('./assets/forca.png')";
             break;
     }
+}
+
+function openModal(title, message) {
+    let modalTitle = document.getElementById("modalLongTitle");
+    modalTitle.innerText = title;
+
+    let modalBody = document.getElementById("modalBody");
+    modalBody.innerHTML = message;
+    $("#pri-modal").modal({
+        show: true
+    });
+}
+
+function restartGame() {
+    location.reload();
 }
