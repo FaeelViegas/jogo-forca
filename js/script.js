@@ -100,7 +100,7 @@ function assembleWord() {
     category.innerHTML = secretWordCategory;
 
     const wordScreen = document.getElementById("secret-word");
-    wordScreen.innerHTML = " ";
+    wordScreen.innerHTML = "";
 
     for (i = 0; i < secretWordDrawn.length; i++) {
         if (list[i] == undefined) {
@@ -116,6 +116,7 @@ function verifyLetter(letter) {
     if (attempt > 0) {
         styleLetter("key-" + letter);
         compareList(letter);
+        assembleWord();
     }
 }
 
@@ -129,6 +130,7 @@ function compareList(letter) {
     const position = secretWordDrawn.indexOf(letter);
     if (position < 0) {
         attempt--;
+        loadImage();
     } else {
         for (i = 0; i < secretWordDrawn.length; i++) {
             if (secretWordDrawn[i] == letter) {
@@ -144,5 +146,31 @@ function compareList(letter) {
 
     if (win == true) {
         attempt = 0;
+    }
+}
+
+function loadImage() {
+    switch (attempt) {
+        case 5:
+            document.getElementById("image").style.background = "url('./assets/forca01.png')";
+            break;
+        case 4:
+            document.getElementById("image").style.background = "url('./assets/forca02.png')";
+            break;
+        case 3:
+            document.getElementById("image").style.background = "url('./assets/forca03.png')";
+            break;
+        case 2:
+            document.getElementById("image").style.background = "url('./assets/forca04.png')";
+            break;
+        case 1:
+            document.getElementById("image").style.background = "url('./assets/forca05.png')";
+            break;
+        case 0:
+            document.getElementById("image").style.background = "url('./assets/forca06.png')";
+            break;
+        default:
+            document.getElementById("image").style.background = "url('./assets/forca.png')";
+            break;
     }
 }
