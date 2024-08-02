@@ -102,12 +102,24 @@ function assembleWord() {
     const wordScreen = document.getElementById("secret-word");
     wordScreen.innerHTML = "";
 
+    console.log(secretWordDrawn);
+
     for (i = 0; i < secretWordDrawn.length; i++) {
         if (list[i] == undefined) {
-            list[i] = "&nbsp;";
-            wordScreen.innerHTML = wordScreen.innerHTML + "<div class='letters'>" + list[i] + "</div>";
+            if (secretWordDrawn[i] == " ") {
+                list[i] = " ";
+                wordScreen.innerHTML = wordScreen.innerHTML + "<div class='lettersSpace'>" + list[i] + "</div>";
+            } else {
+                list[i] = "&nbsp;";
+                wordScreen.innerHTML = wordScreen.innerHTML + "<div class='letters'>" + list[i] + "</div>";
+            }
         } else {
-            wordScreen.innerHTML = wordScreen.innerHTML + "<div class='letters'>" + list[i] + "</div>";
+            if (secretWordDrawn[i] == " ") {
+                list[i] = " ";
+                wordScreen.innerHTML = wordScreen.innerHTML + "<div class='lettersSpace'>" + list[i] + "</div>";
+            } else {
+                wordScreen.innerHTML = wordScreen.innerHTML + "<div class='letters'>" + list[i] + "</div>";
+            }
         }
     }
 }
@@ -115,15 +127,21 @@ function assembleWord() {
 function verifyLetter(letter) {
     document.getElementById("key-" + letter).disabled = true;
     if (attempt > 0) {
-        styleLetter("key-" + letter);
+        styleLetter("key-" + letter, false);
         compareList(letter);
         assembleWord();
     }
 }
 
-function styleLetter(key) {
-    document.getElementById(key).style.background = "#30A5A5";
-    document.getElementById(key).style.color = "#ffffff";
+function styleLetter(key, con) {
+    if (con == false) {
+        document.getElementById(key).style.background = "#C71585";
+        document.getElementById(key).style.color = "#ffffff";
+    } else {
+        document.getElementById(key).style.background = "#30A5A5";
+        document.getElementById(key).style.color = "#ffffff";
+    }
+
 }
 
 function compareList(letter) {
@@ -136,6 +154,7 @@ function compareList(letter) {
             openModal("OPS!", "Você perdeu 🥹... A palavra secreta era <br>" + secretWordDrawn);
         }
     } else {
+        styleLetter("key-" + letter, true);
         for (i = 0; i < secretWordDrawn.length; i++) {
             if (secretWordDrawn[i] == letter) {
                 list[i] = letter;
