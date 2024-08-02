@@ -110,8 +110,6 @@ function assembleWord() {
     const wordScreen = document.getElementById("secret-word");
     wordScreen.innerHTML = "";
 
-    console.log(secretWordDrawn);
-
     for (i = 0; i < secretWordDrawn.length; i++) {
         if (list[i] == undefined) {
             if (secretWordDrawn[i] == " ") {
