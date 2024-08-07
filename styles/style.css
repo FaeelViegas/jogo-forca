@@ -127,6 +127,14 @@ body {
         justify-content: center;
     }
 
+    .top img {
+        width: 150px;
+    }
+
+    .top span {
+        font-size: 15px;
+    }
+
     .keys button {
         width: 25px;
         height: 25px;
@@ -140,6 +148,14 @@ body {
 @media (min-width: 376px) {
     .top {
         justify-content: center;
+    }
+
+    .top img {
+        width: 150px;
+    }
+
+    .top span {
+        font-size: 15px;
     }
 
     .keys button {
@@ -165,6 +181,14 @@ body {
         justify-content: center;
     }
 
+    .top img {
+        width: 150px;
+    }
+
+    .top span {
+        font-size: 15px;
+    }
+
     .keys button {
         width: 36px;
         height: 36px;
@@ -186,6 +210,16 @@ body {
 @media (min-width: 769px) {
     .top {
         justify-content: space-between;
+    }
+
+    .top img {
+        width: 250px;
+    }
+
+    .top span {
+        color: white;
+        font-size: 20px;
+        font-weight: 800;
     }
 
     .keys button {
