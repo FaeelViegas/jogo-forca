@@ -40,7 +40,6 @@ const words = [
     { name: "RUBY", category: "FRUTAS" },
     { name: "GUANABANA", category: "FRUTAS" },
     { name: "BAQUIRO", category: "FRUTAS" },
-    { name: "BERRIES", category: "FRUTAS" },
     { name: "BRASIL", category: "PAISES" },
     { name: "ARGENTINA", category: "PAISES" },
     { name: "CHILE", category: "PAISES" },
